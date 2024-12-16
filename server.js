@@ -3,7 +3,7 @@ const app = express();
 const port = 80;
 
 app.get('/', (req, res) => {
-    res.send('¡Hola mundo! Esta es mi pequeña aplicación desplegada en EC2 con GitHub Actions :)');
+    res.send('Esta es mi pequeña aplicación desplegada en EC2 con GitHub Actions :)');
 });
 
 app.listen(port, () => {
