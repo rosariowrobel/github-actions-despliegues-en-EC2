@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
+const port = 80;
 
 app.get('/', (req, res) => {
-  res.send('¡La aplicación está corriendo en EC2!');
+    res.send('Esta es mi aplicación desplegada en EC2 :)');
 });
 
-const PORT = 80;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(port, () => {
+    console.log(`Aplicación corriendo en http://localhost:${port}`);
 });
