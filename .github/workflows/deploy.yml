@@ -22,8 +22,8 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@23.20.58.83 "mkdir -p ~/app"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./ ubuntu@23.20.58.83:~/app
+          rsync -av --exclude='.git' -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" ./ ubuntu@23.20.58.83:~/app
 
       - name: Start Application
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@23.20.58.83 "cd ~/app && npm install && nohup node server.js > output.log 2>&1 &"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@23.20.58.83 "cd ~/app && npm install && nohup sudo node server.js > output.log 2>&1 &"
